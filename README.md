@@ -21,3 +21,4 @@ Assignment solution
      route: /update-user/:userNo
    - DELETE
      route: /delete-user/:userNo
+ 5. For Testing of API's, we can use Postman. We can just send request to the API route along with data via Postman and test the REST API, while server is running       locally.
