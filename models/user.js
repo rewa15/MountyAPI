@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const addressSchema = new mongoose.schema({
+const addressSchema = new Schema({
 
 street: {
  	type: String
@@ -27,7 +28,7 @@ coordinates: {
 
 });
 
-const userSchema = new mongoose.schema({
+const userSchema = new Schema({
 
 name: {
  	type: String
@@ -42,7 +43,7 @@ mobile: {
 },
 createdAt: {
 	type: Date
-}
+},
 address: [addressSchema]
 
 });

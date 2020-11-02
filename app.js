@@ -30,13 +30,20 @@ app.post("/add-user",function(req,res)
 {
   let today = new Date();
   let newAddress = {};
+  var coordArr = [];
   newAddress.street = req.body.street;
   newAddress.locality = req.body.locality;
   newAddress.city = req.body.city;
   newAddress.state = req.body.state;
   newAddress.pincode = req.body.pincode;
   newAddress.coordinatesType = req.body.coordinatesType;
-  newAddress.coordinates = req.body.coordinates;
+  var lat = req.body.latitude;
+  var long = req.body.longitude;
+  if(lat && long) {
+     coordArr.push(lat);
+     coordArr.push(long);
+  }
+  newAddress.coordinates = coordArr;
 
   let newUser = new User({
         name: req.body.name,
@@ -59,7 +66,7 @@ app.post("/add-user",function(req,res)
 // Update a specific user
 app.put("/update-user/:userNo",function(req,res)
 {
-  User.updateOne({mobile: req.params.userNo},{email: req.body.email},{overwrite: true}, function(err){
+  User.updateOne({mobile: req.params.userNo},{email: req.body.email}, function(err){
       if(!err)
       {
         res.send("Succesfully updated User!");
