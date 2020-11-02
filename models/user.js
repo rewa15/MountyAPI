@@ -21,7 +21,8 @@ coordinatesType: {
  	type: String
 },
 coordinates: {
- 	type: Array
+ 	type: [Number],
+ 	index: '2d'
 }
 
 });
@@ -39,6 +40,13 @@ mobile: {
  	required: true,
  	unique: true
 },
+createdAt: {
+	type: Date
+}
 address: [addressSchema]
 
 });
+
+const User = mongoose.model('user', userSchema);
+
+module.exports = User;
